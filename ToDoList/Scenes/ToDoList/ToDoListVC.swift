@@ -9,33 +9,65 @@ import UIKit
 import SnapKit
 
 class ToDoListVC: UIViewController {
-    let tableView = UITableView()
+    let viewModel = ToDoListViewModel()
     
+    let tableView = UITableView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "To Do List"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addToDo))
+        
         configure()
     }
     
-    func configure() {
-        self.view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.pin(to: self.view)
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Row \(indexPath.row) of \(tableView.numberOfRows(inSection: 0)) is pressed.")
+    func configure() {
+        view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(ToDoListCell.self, forCellReuseIdentifier: "cell")
+        tableView.rowHeight = 120
+        tableView.pin(to: view)
+    }
+    
+    @objc func addToDo() {
+        let vc = DetailViewController()
+        vc.setCreateScene()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 extension ToDoListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.getAllItems().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ToDoListCell
+        let item = viewModel.getAllItems()[indexPath.row]
+        cell.setCellItem(item: item)
+        cell.delegate = self
         return cell
     }
 }
+
+extension ToDoListVC: ToDoListCellDelegate {
+    func checkButtonTapped(item: ToDoItem) {
+        viewModel.updateItemCompletion(item: item)
+        tableView.reloadData()
+    }
+    
+    func infoButtonTapped(item: ToDoItem) {
+        let vc = DetailViewController()
+        vc.setEditScene(item: item)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+}
+
