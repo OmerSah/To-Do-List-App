@@ -8,7 +8,7 @@
 import Foundation
 
 extension String {
-    func getDateFromString() -> Date? {
+    func getDateAndTime() -> Date? {
         return DateFormatter.dateAndTime.date(from: self)
     }
 }

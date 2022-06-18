@@ -9,54 +9,59 @@ import UIKit
 import SnapKit
 
 class ToDoListVC: UIViewController {
-    let viewModel = ToDoListViewModel()
+    private let viewModel = ToDoListViewModel()
     
-    let tableView = UITableView()
+    private lazy var tableView: UITableView = {
+        var table = UITableView()
+        table.register(ToDoListCell.self, forCellReuseIdentifier: Constant.ToDoList.cellIdentifier)
+        table.delegate = self
+        table.dataSource = self
+        table.rowHeight = 120
+        return table
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "To Do List"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addToDo))
         
         configure()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        viewModel.getItemsFromDefaults()
         tableView.reloadData()
     }
     
-    func configure() {
+    private func configure() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = Constant.ToDoList.navigationTitle
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addToDo))
+        
         view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(ToDoListCell.self, forCellReuseIdentifier: "cell")
-        tableView.rowHeight = 120
         tableView.pin(to: view)
     }
     
-    @objc func addToDo() {
-        let vc = DetailViewController()
+    @objc private func addToDo() {
+        let vc = DetailVC()
         vc.setCreateScene()
         navigationController?.pushViewController(vc, animated: true)
     }
 }
 
+// MARK: Conform UITableView delegate methods
 extension ToDoListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.getAllItems().count
+        return viewModel.items.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ToDoListCell
-        let item = viewModel.getAllItems()[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.ToDoList.cellIdentifier, for: indexPath) as! ToDoListCell
+        let item = viewModel.items[indexPath.row]
         cell.setCellItem(item: item)
         cell.delegate = self
         return cell
     }
 }
 
+// MARK: Conform UITableView delegate methods
 extension ToDoListVC: ToDoListCellDelegate {
     func checkButtonTapped(item: ToDoItem) {
         viewModel.updateItemCompletion(item: item)
@@ -64,10 +69,9 @@ extension ToDoListVC: ToDoListCellDelegate {
     }
     
     func infoButtonTapped(item: ToDoItem) {
-        let vc = DetailViewController()
+        let vc = DetailVC()
         vc.setEditScene(item: item)
         navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 

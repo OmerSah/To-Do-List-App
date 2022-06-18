@@ -9,17 +9,12 @@ import Foundation
 
 final class DetailViewModel {
     private var items = [ToDoItem]()
-    private let itemsKey = "todoItem"
+    private let itemsKey = Constant.UserDefaultsConstants.itemsKey
+    
     var toDoItem = ToDoItem()
     
-    
     init() {
-        if let data = UserDefaults.standard.data(forKey: itemsKey) {
-            let allItems = try! JSONDecoder().decode([ToDoItem].self, from: data)
-            items = allItems
-        } else {
-            refreshDefaults()
-        }
+        getItemsFromDefaults()
     }
     
     func updateData() {
@@ -28,15 +23,17 @@ final class DetailViewModel {
         } else {
             items.append(toDoItem)
         }
-        refreshDefaults()
+        addItemsToDefaults()
     }
     
-    private func refreshDefaults() {
-        do {
-            let data = try JSONEncoder().encode(items)
-            UserDefaults.standard.set(data, forKey: itemsKey)
-        } catch {
-            print("Failed!")
-        }
+    private func getItemsFromDefaults() {
+        guard let data = UserDefaults.standard.data(forKey: itemsKey),
+              let allItems = try? JSONDecoder().decode([ToDoItem].self, from: data) else { return }
+        items = allItems
+    }
+    
+    private func addItemsToDefaults() {
+        guard let data = try? JSONEncoder().encode(items) else { return }
+        UserDefaults.standard.set(data, forKey: itemsKey)
     }
 }

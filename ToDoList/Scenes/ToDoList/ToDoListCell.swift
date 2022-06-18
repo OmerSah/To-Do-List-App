@@ -15,15 +15,42 @@ protocol ToDoListCellDelegate: AnyObject {
 
 class ToDoListCell: UITableViewCell {
     
-    private var titleLabel = UILabel()
-    private var detailLabel = UILabel()
-    private var dateLabel = UILabel()
-    private var checkButton = UIButton()
-    private var infoButton = UIButton()
+    private let titleLabel: UILabel = {
+        let title = UILabel()
+        title.font = UIFont.boldSystemFont(ofSize: 24)
+        return title
+    }()
+    private let detailLabel: UILabel = {
+        let detail = UILabel()
+        detail.font = UIFont.systemFont(ofSize: 16)
+        detail.textColor = .lightGray
+        detail.numberOfLines = 2
+        detail.lineBreakMode = NSLineBreakMode.byTruncatingTail
+        return detail
+    }()
+    private let dateLabel: UILabel = {
+        let date = UILabel()
+        date.font = UIFont.systemFont(ofSize: 12)
+        return date
+    }()
     
-    private var cellItem = ToDoItem()
+    private let checkButton: UIButton = {
+        let check = UIButton()
+        check.setImage(UIImage(systemName: Constant.ToDoListCell.incompleteImage), for: .normal)
+        check.setImage(UIImage(systemName: Constant.ToDoListCell.completeImage), for: .selected)
+        check.addTarget(self, action: #selector(checkButtonAction), for: .touchUpInside)
+        return check
+    }()
+    private let infoButton: UIButton = {
+        let info = UIButton()
+        info.setImage(UIImage(systemName: Constant.ToDoListCell.infoImage), for: .normal)
+        info.addTarget(self, action: #selector(infoButtonAction), for: .touchUpInside)
+        return info
+    }()
     
     weak var delegate: ToDoListCellDelegate?
+    
+    private var cellItem = ToDoItem()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -34,54 +61,39 @@ class ToDoListCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func configure() {
+        addSubviews()
+        makeAllConstraints()
+    }
+    
     func setCellItem(item: ToDoItem) {
         titleLabel.text = item.title
         dateLabel.text = item.date
         detailLabel.text = item.content
         cellItem = item
+        checkButton.isSelected = item.isCompleted
+    }
+
+    @objc private func infoButtonAction() {
+        delegate?.infoButtonTapped(item: cellItem)
     }
     
-    private func configure() {
-        configureInfoButton()
-        configureCheckButton(imageName: cellItem.isCompleted ? "square": "info.circle")
-        configureTitle()
-        configureDate()
-        configureDetail()
-        makeAllConstraints()
+    @objc private func checkButtonAction() {
+        delegate?.checkButtonTapped(item: cellItem)
     }
-    
-    private func configureInfoButton() {
+}
+
+// MARK: Make constraints and add subviews
+private extension ToDoListCell {
+    private func addSubviews() {
         contentView.addSubview(infoButton)
-        infoButton.setImage(UIImage(systemName: "info.circle"), for: .normal)
-        infoButton.addTarget(self, action: #selector(infoButtonAction), for: .touchUpInside)
-    }
-    
-    private func configureCheckButton(imageName: String) {
         contentView.addSubview(checkButton)
-        checkButton.setImage(UIImage(systemName: imageName), for: .normal)
-        checkButton.addTarget(self, action: #selector(checkButtonAction), for: .touchUpInside)
+        addSubview(titleLabel)
+        addSubview(detailLabel)
+        addSubview(dateLabel)
     }
     
-    private func configureTitle() {
-        self.addSubview(titleLabel)
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
-    }
-    
-    private func configureDetail() {
-        self.addSubview(detailLabel)
-        
-        detailLabel.font = UIFont.systemFont(ofSize: 16)
-        detailLabel.textColor = .lightGray
-        detailLabel.numberOfLines = 3
-        detailLabel.lineBreakMode = NSLineBreakMode.byTruncatingTail
-    }
-    
-    private func configureDate() {
-        self.addSubview(dateLabel)
-        dateLabel.font = UIFont.systemFont(ofSize: 12)
-    }
-    
-    private func makeAllConstraints() {
+    func makeAllConstraints() {
         titleLabel.snp.makeConstraints{ (make) in
             make.top.equalTo(18)
             make.leading.equalTo(56)
@@ -110,13 +122,5 @@ class ToDoListCell: UITableViewCell {
         infoButton.imageView?.snp.makeConstraints {
             $0.size.equalTo(24)
         }
-    }
-    
-    @objc private func infoButtonAction() {
-        delegate?.infoButtonTapped(item: cellItem)
-    }
-    
-    @objc private func checkButtonAction() {
-        delegate?.checkButtonTapped(item: cellItem)
     }
 }

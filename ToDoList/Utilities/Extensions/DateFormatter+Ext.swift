@@ -13,7 +13,7 @@ extension DateFormatter
         let formatter = DateFormatter()
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale
-        formatter.dateFormat = "yyyy/MM/dd - HH:mm"
+        formatter.dateFormat = Constant.Date.dateFormat
         return formatter
     }()
 }

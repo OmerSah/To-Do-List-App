@@ -8,37 +8,29 @@
 import Foundation
 
 final class ToDoListViewModel {
-    private var items = [ToDoItem]()
+    private(set) var items = [ToDoItem]()
 
-    private let itemsKey = "todoItem"
+    private let itemsKey = Constant.UserDefaultsConstants.itemsKey
     
     init() {
-        updateItems()
-    }
-    
-    func getAllItems() -> [ToDoItem] {
-        updateItems()
-        return items
-    }
-    
-    func getSize() -> Int {
-        updateItems()
-        return items.count
-    }
-    
-    private func updateItems() {
-        guard let data = UserDefaults.standard.data(forKey: itemsKey),
-              let allItems = try? JSONDecoder().decode([ToDoItem].self, from: data)
-        else {
-            return
-        }
-        items = allItems
+        getItemsFromDefaults()
     }
     
     func updateItemCompletion(item: ToDoItem) {
         if let index = items.firstIndex(where: {$0.id == item.id}) {
             items[index] = item.updateCompletion()
         }
-        updateItems()
+        addItemsToDefaults()
+    }
+    
+    func getItemsFromDefaults() {
+        guard let data = UserDefaults.standard.data(forKey: itemsKey),
+              let allItems = try? JSONDecoder().decode([ToDoItem].self, from: data) else { return }
+        items = allItems
+    }
+    
+    private func addItemsToDefaults() {
+        guard let data = try? JSONEncoder().encode(items) else { return }
+        UserDefaults.standard.set(data, forKey: itemsKey)
     }
 }

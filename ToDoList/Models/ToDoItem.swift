@@ -14,12 +14,12 @@ struct ToDoItem: Identifiable, Codable {
     let date: String
     let isCompleted: Bool
     
-    init(id: String = UUID().uuidString,title: String = "", content: String = "", date: String = "", isCompleted: Bool = true) {
+    init(id: String = UUID().uuidString,title: String = "", content: String = "", date: String = "", isCompleted: Bool = false) {
         self.id = id
         self.title = title
         self.content = content
         self.date = date
-        self.isCompleted = true
+        self.isCompleted = isCompleted
     }
     
     func updateItem(title: String, content: String, date: String) -> ToDoItem {
@@ -27,7 +27,7 @@ struct ToDoItem: Identifiable, Codable {
     }
     
     func updateCompletion() -> ToDoItem {
-        return ToDoItem(id: self.id, title: title, content: content, date: date, isCompleted: !isCompleted)
+        return ToDoItem(id: self.id, title: title, content: content, date: date, isCompleted: !self.isCompleted)
     }
 }
     

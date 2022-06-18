@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA0578DB285171AD0067DBB3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0578DA285171AD0067DBB3 /* DetailViewController.swift */; };
+		BA0578DB285171AD0067DBB3 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA0578DA285171AD0067DBB3 /* DetailVC.swift */; };
 		BA2AE445284F7ECB00151DA1 /* DateFormatter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2AE444284F7ECB00151DA1 /* DateFormatter+Ext.swift */; };
 		BA2AE449284F815D00151DA1 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2AE448284F815D00151DA1 /* ToDoItem.swift */; };
 		BA3885ED284B6A4A00099B80 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3885EC284B6A4A00099B80 /* SceneDelegate.swift */; };
@@ -18,6 +18,15 @@
 		BA38860D284B906600099B80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA38860C284B906600099B80 /* AppDelegate.swift */; };
 		BA4D42F42852421700A257FF /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4D42F32852421700A257FF /* DetailViewModel.swift */; };
 		BA591DCB284B958300A2FD16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA591DCA284B958300A2FD16 /* LaunchScreen.storyboard */; };
+		BA9B84ED285BE51F00FF4337 /* DetailViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9B84EC285BE51F00FF4337 /* DetailViewConstants.swift */; };
+		BA9B84F3285C033300FF4337 /* ToDoListConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9B84F2285C033300FF4337 /* ToDoListConstants.swift */; };
+		BA9B84F5285C036000FF4337 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9B84F4285C036000FF4337 /* Constants.swift */; };
+		BA9B84F7285C04C600FF4337 /* ToDoListCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9B84F6285C04C600FF4337 /* ToDoListCellConstants.swift */; };
+		BA9B84FA285C064300FF4337 /* DVDescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9B84F9285C064300FF4337 /* DVDescriptionLabel.swift */; };
+		BA9B84FC285C08FB00FF4337 /* DVTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9B84FB285C08FB00FF4337 /* DVTextField.swift */; };
+		BA9B8500285C0B0B00FF4337 /* DVDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9B84FF285C0B0B00FF4337 /* DVDatePicker.swift */; };
+		BABF490F285D20EA00E32B5E /* UserDefaultsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABF490E285D20EA00E32B5E /* UserDefaultsConstants.swift */; };
+		BABF4916285D486300E32B5E /* DateConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABF4915285D486300E32B5E /* DateConstants.swift */; };
 		BAC98CFD2857D98200E0D8E6 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC98CFC2857D98200E0D8E6 /* String+Ext.swift */; };
 		BAE5261D284CF09900DB8B09 /* ToDoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5261C284CF09900DB8B09 /* ToDoListViewModel.swift */; };
 		BAE52624284CFBBD00DB8B09 /* ToDoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE52623284CFBBD00DB8B09 /* ToDoListCell.swift */; };
@@ -25,7 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BA0578DA285171AD0067DBB3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		BA0578DA285171AD0067DBB3 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		BA2AE444284F7ECB00151DA1 /* DateFormatter+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Ext.swift"; sourceTree = "<group>"; };
 		BA2AE448284F815D00151DA1 /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		BA3885E7284B6A4A00099B80 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,6 +46,15 @@
 		BA38860C284B906600099B80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA4D42F32852421700A257FF /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		BA591DCA284B958300A2FD16 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BA9B84EC285BE51F00FF4337 /* DetailViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewConstants.swift; sourceTree = "<group>"; };
+		BA9B84F2285C033300FF4337 /* ToDoListConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListConstants.swift; sourceTree = "<group>"; };
+		BA9B84F4285C036000FF4337 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BA9B84F6285C04C600FF4337 /* ToDoListCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListCellConstants.swift; sourceTree = "<group>"; };
+		BA9B84F9285C064300FF4337 /* DVDescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVDescriptionLabel.swift; sourceTree = "<group>"; };
+		BA9B84FB285C08FB00FF4337 /* DVTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVTextField.swift; sourceTree = "<group>"; };
+		BA9B84FF285C0B0B00FF4337 /* DVDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVDatePicker.swift; sourceTree = "<group>"; };
+		BABF490E285D20EA00E32B5E /* UserDefaultsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsConstants.swift; sourceTree = "<group>"; };
+		BABF4915285D486300E32B5E /* DateConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConstants.swift; sourceTree = "<group>"; };
 		BAC98CFC2857D98200E0D8E6 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		BAE5261C284CF09900DB8B09 /* ToDoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewModel.swift; sourceTree = "<group>"; };
 		BAE52623284CFBBD00DB8B09 /* ToDoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListCell.swift; sourceTree = "<group>"; };
@@ -58,6 +76,12 @@
 		BA163A982853C01D00F21EA3 /* Constans */ = {
 			isa = PBXGroup;
 			children = (
+				BA9B84F4285C036000FF4337 /* Constants.swift */,
+				BA9B84EC285BE51F00FF4337 /* DetailViewConstants.swift */,
+				BA9B84F2285C033300FF4337 /* ToDoListConstants.swift */,
+				BA9B84F6285C04C600FF4337 /* ToDoListCellConstants.swift */,
+				BABF490E285D20EA00E32B5E /* UserDefaultsConstants.swift */,
+				BABF4915285D486300E32B5E /* DateConstants.swift */,
 			);
 			path = Constans;
 			sourceTree = "<group>";
@@ -81,11 +105,11 @@
 		BA3885E9284B6A4A00099B80 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				BA9B8501285C0CB000FF4337 /* Views */,
 				BAE5261B284BF33E00DB8B09 /* Resources */,
-				BA591DCC284BBCD400A2FD16 /* Model */,
+				BA591DCC284BBCD400A2FD16 /* Models */,
 				BA388606284B768300099B80 /* Utilities */,
 				BA3885FF284B6B5D00099B80 /* Scenes */,
-				BA3885F8284B6A4A00099B80 /* Info.plist */,
 				BA3885FE284B6B4F00099B80 /* App */,
 			);
 			path = ToDoList;
@@ -103,8 +127,8 @@
 		BA3885FF284B6B5D00099B80 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				BAE5261E284CF5D200DB8B09 /* ToDoDetail */,
 				BA591DCA284B958300A2FD16 /* LaunchScreen.storyboard */,
+				BAE5261E284CF5D200DB8B09 /* ToDoDetail */,
 				BA388602284B6BDA00099B80 /* ToDoList */,
 			);
 			path = Scenes;
@@ -140,17 +164,28 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		BA591DCC284BBCD400A2FD16 /* Model */ = {
+		BA591DCC284BBCD400A2FD16 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				BA2AE448284F815D00151DA1 /* ToDoItem.swift */,
 			);
-			path = Model;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BA9B8501285C0CB000FF4337 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BA9B84F9285C064300FF4337 /* DVDescriptionLabel.swift */,
+				BA9B84FB285C08FB00FF4337 /* DVTextField.swift */,
+				BA9B84FF285C0B0B00FF4337 /* DVDatePicker.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		BAE5261B284BF33E00DB8B09 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BA3885F8284B6A4A00099B80 /* Info.plist */,
 				BA3885F3284B6A4A00099B80 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -159,7 +194,7 @@
 		BAE5261E284CF5D200DB8B09 /* ToDoDetail */ = {
 			isa = PBXGroup;
 			children = (
-				BA0578DA285171AD0067DBB3 /* DetailViewController.swift */,
+				BA0578DA285171AD0067DBB3 /* DetailVC.swift */,
 				BA4D42F32852421700A257FF /* DetailViewModel.swift */,
 			);
 			path = ToDoDetail;
@@ -241,18 +276,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA0578DB285171AD0067DBB3 /* DetailViewController.swift in Sources */,
+				BA0578DB285171AD0067DBB3 /* DetailVC.swift in Sources */,
 				BAE5261D284CF09900DB8B09 /* ToDoListViewModel.swift in Sources */,
+				BABF490F285D20EA00E32B5E /* UserDefaultsConstants.swift in Sources */,
+				BA9B84FA285C064300FF4337 /* DVDescriptionLabel.swift in Sources */,
 				BA388601284B6BD000099B80 /* ToDoListVC.swift in Sources */,
 				BA2AE449284F815D00151DA1 /* ToDoItem.swift in Sources */,
+				BA9B84ED285BE51F00FF4337 /* DetailViewConstants.swift in Sources */,
+				BABF4916285D486300E32B5E /* DateConstants.swift in Sources */,
 				BA388609284B76A900099B80 /* UIView+Ext.swift in Sources */,
+				BA9B84F5285C036000FF4337 /* Constants.swift in Sources */,
 				BA2AE445284F7ECB00151DA1 /* DateFormatter+Ext.swift in Sources */,
+				BA9B84F3285C033300FF4337 /* ToDoListConstants.swift in Sources */,
 				BAC98CFD2857D98200E0D8E6 /* String+Ext.swift in Sources */,
 				BAEA245B2855703F00E10F5B /* Date+Ext.swift in Sources */,
 				BA38860D284B906600099B80 /* AppDelegate.swift in Sources */,
 				BA3885ED284B6A4A00099B80 /* SceneDelegate.swift in Sources */,
 				BA4D42F42852421700A257FF /* DetailViewModel.swift in Sources */,
+				BA9B84F7285C04C600FF4337 /* ToDoListCellConstants.swift in Sources */,
 				BAE52624284CFBBD00DB8B09 /* ToDoListCell.swift in Sources */,
+				BA9B84FC285C08FB00FF4337 /* DVTextField.swift in Sources */,
+				BA9B8500285C0B0B00FF4337 /* DVDatePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,9 +428,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7YZ2S9UZA3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ToDoList/Info.plist;
+				INFOPLIST_FILE = ToDoList/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -413,9 +457,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7YZ2S9UZA3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ToDoList/Info.plist;
+				INFOPLIST_FILE = ToDoList/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
